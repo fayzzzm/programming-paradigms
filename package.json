@@ -1,24 +1,33 @@
 {
-  "name": "programming-paradigms",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fayzzzm/programming-paradigms.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/fayzzzm/programming-paradigms/issues"
-  },
-  "homepage": "https://github.com/fayzzzm/programming-paradigms#readme",
-  "devDependencies": {
-    "jest": "^26.4.0",
-    "prettier": "^2.0.5"
-  }
+    "name": "programming-paradigms",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build:rp": "webpack --config src/rp-paradigm/webpack.config.js",
+        "dev-server:rp": "npm run build:rp && cd src/rp-paradigm && webpack-dev-server"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/fayzzzm/programming-paradigms.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/fayzzzm/programming-paradigms/issues"
+    },
+    "homepage": "https://github.com/fayzzzm/programming-paradigms#readme",
+    "devDependencies": {
+        "html-webpack-plugin": "^4.3.0",
+        "jest": "^26.4.0",
+        "prettier": "^2.0.5",
+        "webpack": "^4.44.1",
+        "webpack-cli": "^3.3.12",
+        "webpack-dev-server": "^3.11.0"
+    },
+    "dependencies": {
+        "rxjs": "^6.6.2"
+    }
 }
