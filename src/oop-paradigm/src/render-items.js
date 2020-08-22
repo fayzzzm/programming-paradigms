@@ -84,7 +84,7 @@ export class RenderFormGroup {
 
         const button = document.createElement('input');
         button.type = 'submit';
-
+      
         form.append(button);
     }
 }
