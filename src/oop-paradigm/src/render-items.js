@@ -4,6 +4,7 @@ import { deleteTodoId } from './index';
 export class RenderTodos {
     static render(todos) {
         const todosContainer = document.querySelector('.todos-container');
+
         todosContainer.innerHTML = '';
 
         todosContainer.append(
