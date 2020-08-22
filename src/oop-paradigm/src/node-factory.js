@@ -30,6 +30,21 @@ class LabelNode {
     }
 }
 
+class ButtonNode {
+    constructor(options) {
+        this.options = options;
+    }
+
+    render() {
+        const { value } = this.options;
+        const button = document.createElement('button');
+
+        button.innerHTML = value;
+
+        return button;
+    }
+}
+
 class DivNode {
     constructor(options) {
         this.options = options;
@@ -66,8 +81,8 @@ class FormNode {
     }
 }
 
-class NodeFactory {
-    createNode = (type, options) => {
+export class NodeFactory {
+    createNode(type, options) {
         switch (type) {
             case 'input':
                 return new InputNode(options);
@@ -77,6 +92,8 @@ class NodeFactory {
                 return new DivNode(options);
             case 'form':
                 return new FormNode(options);
+            case 'button':
+                return new ButtonNode(options);
         }
-    };
+    }
 }

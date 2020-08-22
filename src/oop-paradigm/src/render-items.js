@@ -1,10 +1,13 @@
-class RenderTodos {
+import { NodeFactory } from './node-factory';
+import { deleteTodoId } from './index';
+
+export class RenderTodos {
     static render(todos) {
         const todosContainer = document.querySelector('.todos-container');
         todosContainer.innerHTML = '';
 
         todosContainer.append(
-            ...todos.map(({ date, task }) => {
+            ...todos.map(({ date, task }, i) => {
                 const dateView = new NodeFactory()
                     .createNode('div', {
                         value: date,
@@ -19,9 +22,20 @@ class RenderTodos {
                     })
                     .render();
 
+                const button = new NodeFactory()
+                    .createNode('button', {
+                        value: 'delete task',
+                        className: 'todo-container__button',
+                    })
+                    .render();
+
+                button.onclick = () => {
+                    deleteTodoId.next(i);
+                };
+
                 const todoContainer = new NodeFactory()
                     .createNode('div', {
-                        value: [dateView, taskView],
+                        value: [dateView, taskView, button],
                         className: 'todo-container',
                     })
                     .render();
@@ -32,7 +46,7 @@ class RenderTodos {
     }
 }
 
-class RenderForm {
+export class RenderForm {
     static render() {
         document.body.append(
             new NodeFactory()
@@ -42,7 +56,7 @@ class RenderForm {
     }
 }
 
-class RenderFormGroup {
+export class RenderFormGroup {
     static render(formGroups) {
         const form = document.querySelector('.form');
 
@@ -69,24 +83,12 @@ class RenderFormGroup {
 
         const button = document.createElement('input');
         button.type = 'submit';
-        button.onclick = (e) => {
-            e.preventDefault();
-            const date = new Date().toUTCString();
-            const task = document.querySelector('#task').value;
-
-            todoList.todos = todoList.todos.concat({
-                date,
-                task,
-            });
-
-            RenderTodos.render(todoList.todos);
-        };
 
         form.append(button);
     }
 }
 
-class RenderTodoListContainer {
+export class RenderTodoListContainer {
     static render() {
         document.body.appendChild(
             new NodeFactory()
