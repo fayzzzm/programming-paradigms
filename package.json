@@ -5,8 +5,10 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build:rp": "webpack --config src/rp-paradigm/webpack.config.js",
-        "dev-server:rp": "npm run build:rp && cd src/rp-paradigm && webpack-dev-server"
+        "build:rp": "webpack --env.PARADIGM=rp-paradigm --config src/webpack.config.js",
+        "build:oop": "webpack --env.PARADIGM=oop-paradigm --config src/webpack.config.js",
+        "dev-server:rp": "cd src/rp-paradigm && webpack-dev-server",
+        "dev-server:oop": "cd src/oop-paradigm && webpack-dev-server --env.PARADIGM=oop-paradigm"
     },
     "repository": {
         "type": "git",
@@ -20,6 +22,10 @@
     },
     "homepage": "https://github.com/fayzzzm/programming-paradigms#readme",
     "devDependencies": {
+        "@babel/core": "^7.11.4",
+        "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+        "@babel/preset-env": "^7.11.0",
+        "babel-loader": "^8.1.0",
         "html-webpack-plugin": "^4.3.0",
         "jest": "^26.4.0",
         "prettier": "^2.0.5",
